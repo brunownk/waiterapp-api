@@ -8,6 +8,10 @@ import { listCategories } from './App/useCases/categories/listCategories';
 import { createProducts } from './App/useCases/products/createProducts';
 import { listProducts } from './App/useCases/products/listProducts';
 import { listProductsByCategory } from './App/useCases/categories/listProductsByCategory';
+import { listOrders } from './App/useCases/orders/listOrders';
+import { createOrder } from './App/useCases/orders/createOrder';
+import { changeOrderStatus } from './App/useCases/orders/changeOrderStatus';
+import { cancelOrder } from './App/useCases/orders/cancelOrder';
 
 export const router = Router();
 
@@ -38,21 +42,13 @@ router.post('/products', upload.single('image'), createProducts);
 router.get('/categories/:categoryId/products', listProductsByCategory);
 
 // List orders
-router.get('/orders', (req, res) => {
-  res.send('OK');
-});
+router.get('/orders', listOrders);
 
 // Create orders
-router.post('/orders', (req, res) => {
-  res.send('OK');
-});
+router.post('/orders', createOrder);
 
 // Change order status
-router.patch('/orders/:orderId', (req, res) => {
-  res.send('OK');
-});
+router.patch('/orders/:orderId', changeOrderStatus);
 
 // Delete/cancel order
-router.delete('/orders/:orderId', (req, res) => {
-  res.send('OK');
-});
+router.delete('/orders/:orderId', cancelOrder);
